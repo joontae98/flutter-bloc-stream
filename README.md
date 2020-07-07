@@ -1,6 +1,6 @@
-# flutterblocstreamapp
+# Flutter Bloc Stream App
 
-A new Flutter application.
+Bloc Pattern 이해를 돕기 위한 App
 
 ## Getting Started
 
