@@ -21,7 +21,7 @@ class _RandomListPageState extends State<RandomListPage> {
             icon: Icon(Icons.menu),
             onPressed: () {
               Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => SavedListPage()));
+                  MaterialPageRoute(builder: (context) => SavedListPage(saved: _saved,)));
             },
           ),
         ],
@@ -29,6 +29,7 @@ class _RandomListPageState extends State<RandomListPage> {
       body: _buildList(),
     );
   }
+
   Widget _buildList() {
     return ListView.builder(itemBuilder: (context, index) {
       if (index.isOdd) {
@@ -43,22 +44,27 @@ class _RandomListPageState extends State<RandomListPage> {
   }
 
   Widget _buildRow(WordPair pair) {
-    final bool alreadySaved = _saved.contains(pair);//set 안에 pair 가 있으면 true 없으면 false
+    final bool alreadySaved =
+        _saved.contains(pair); //set 안에 pair 가 있으면 true 없으면 false
     return ListTile(
-      title: Text(pair.asPascalCase,textScaleFactor: 1.5,
+      title: Text(
+        pair.asPascalCase,
+        textScaleFactor: 1.5,
       ),
       trailing: Icon(
         alreadySaved ? Icons.favorite : Icons.favorite_border,
         color: Colors.red,
       ),
-      onTap: (){
-        if(alreadySaved){
-          _saved.remove(pair);
-        }else {
-          _saved.add(pair);
-        }
+      onTap: () {
+        setState(() {
+          if (alreadySaved) {
+            _saved.remove(pair);
+          } else {
+            _saved.add(pair);
+          }
+          print(_saved.toString());
+        });
       },
     );
   }
 }
-
