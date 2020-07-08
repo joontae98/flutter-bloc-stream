@@ -35,6 +35,11 @@ class _SavedListPageState extends State<SavedListPage> {
         pair.asPascalCase,
         textScaleFactor: 1.5,
       ),
+      onTap: (){
+        setState(() {
+          widget.saved.remove(pair);
+        });
+      },
     );
   }
 
