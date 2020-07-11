@@ -2,7 +2,7 @@
 
 Bloc Pattern 이해를 돕기 위한 App
 
-## Getting Started
+## How to use?
 
 This project is a starting point for a Flutter application.
 
