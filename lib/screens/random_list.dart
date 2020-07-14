@@ -1,5 +1,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterblocstreamapp/bloc/bloc.dart';
 import 'package:flutterblocstreamapp/screens/saved.dart';
 
 class RandomListPage extends StatefulWidget {
@@ -9,7 +10,6 @@ class RandomListPage extends StatefulWidget {
 
 class _RandomListPageState extends State<RandomListPage> {
   final List<WordPair> _suggestions = [];
-  final Set<WordPair> _saved = Set();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class _RandomListPageState extends State<RandomListPage> {
             icon: Icon(Icons.menu),
             onPressed: () {
               Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => SavedListPage(saved: _saved,)));
+                  MaterialPageRoute(builder: (context) => SavedListPage()));
             },
           ),
         ],
@@ -31,21 +31,26 @@ class _RandomListPageState extends State<RandomListPage> {
   }
 
   Widget _buildList() {
-    return ListView.builder(itemBuilder: (context, index) {
-      if (index.isOdd) {
-        return Divider();
-      }
-      var realIndex = index ~/ 2;
-      if (realIndex >= _suggestions.length) {
-        _suggestions.addAll(generateWordPairs().take(10));
-      }
-      return _buildRow(_suggestions[realIndex]);
-    });
+    return StreamBuilder<Set<WordPair>>(
+        stream: bloc.savedStream,
+        builder: (context, snapshot) {
+          return ListView.builder(itemBuilder: (context, index) {
+            if (index.isOdd) {
+              return Divider();
+            }
+            var realIndex = index ~/ 2;
+            if (realIndex >= _suggestions.length) {
+              _suggestions.addAll(generateWordPairs().take(10));
+            }
+            return _buildRow(snapshot.data, _suggestions[realIndex]);
+          });
+        });
   }
 
-  Widget _buildRow(WordPair pair) {
-    final bool alreadySaved =
-        _saved.contains(pair); //set 안에 pair 가 있으면 true 없으면 false
+  Widget _buildRow(Set<WordPair> saved, WordPair pair) {
+    final bool alreadySaved = saved == null
+        ? false
+        : saved.contains(pair); //처음 snapshot.data null을 false처리 하기 위한 code
     return ListTile(
       title: Text(
         pair.asPascalCase,
@@ -56,15 +61,8 @@ class _RandomListPageState extends State<RandomListPage> {
         color: Colors.red,
       ),
       onTap: () {
-        setState(() {
-          if (alreadySaved) {
-            _saved.remove(pair);
-          } else {
-            _saved.add(pair);
-          }
-          print(_saved.toString());
-        });
-      },
+        bloc.addToOrRemoveFromSavedList(pair);
+        },
     );
   }
 }

@@ -18,9 +18,10 @@ class Bloc {
   addToOrRemoveFromSavedList(WordPair item){
     //Set saved에 단어를 add or remove 함수
     if(saved.contains(item))
-      saved.add(item);
-    else
       saved.remove(item);
+    else
+      saved.add(item);
+    print(saved.toString());
     _savedController.sink.add(saved);
     //변경된 데이터를 sink로 넣어주고 stream으로 나감
   }
@@ -32,3 +33,4 @@ class Bloc {
 }
 
 var bloc = Bloc();
+//생성자

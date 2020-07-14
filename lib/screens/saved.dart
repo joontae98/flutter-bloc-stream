@@ -3,7 +3,7 @@ import 'package:english_words/english_words.dart';
 
 class SavedListPage extends StatefulWidget {
   final Set<WordPair> saved;
-  SavedListPage({@required this.saved});
+  SavedListPage({this.saved});
   @override
   _SavedListPageState createState() => _SavedListPageState();
 }
