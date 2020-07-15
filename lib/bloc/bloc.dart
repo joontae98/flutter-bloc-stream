@@ -15,6 +15,8 @@ class Bloc {
   get savedStream => _savedController.stream;
   //get을 이용하여 getSavedStream 함수를 간략화
 
+  get addCrrentSaved => _savedController.sink.add(saved);
+
   addToOrRemoveFromSavedList(WordPair item){
     //Set saved에 단어를 add or remove 함수
     if(saved.contains(item))
