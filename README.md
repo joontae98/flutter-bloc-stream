@@ -1,18 +1,11 @@
 # Flutter Bloc Stream App
 
-Bloc Pattern 이해를 돕기 위한 App
+Bloc Pattern, Stream의 이해를 돕기 위한 App
+
+## Tech used
 
 ## How to use?
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 
 출처: https://www.youtube.com/channel/UCUH2DSbsNUz2sW3kBNn4ibw
