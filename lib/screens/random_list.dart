@@ -3,12 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterblocstreamapp/bloc/bloc.dart';
 import 'package:flutterblocstreamapp/screens/saved.dart';
 
-class RandomListPage extends StatefulWidget {
-  @override
-  _RandomListPageState createState() => _RandomListPageState();
-}
-
-class _RandomListPageState extends State<RandomListPage> {
+class RandomListPage extends StatelessWidget {
   final List<WordPair> _suggestions = [];
 
   @override

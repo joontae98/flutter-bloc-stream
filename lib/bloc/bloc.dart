@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:english_words/english_words.dart';
-import 'package:flutterblocstreamapp/screens/saved.dart';
 
 class Bloc {
   //bloc pattern 은 sink로 데이터를 보내면 stream으로 return 해주는 방식

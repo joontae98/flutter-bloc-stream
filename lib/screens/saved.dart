@@ -2,12 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutterblocstreamapp/bloc/bloc.dart';
 
-class SavedListPage extends StatefulWidget {
-  @override
-  _SavedListPageState createState() => _SavedListPageState();
-}
+class SavedListPage extends StatelessWidget {
 
-class _SavedListPageState extends State<SavedListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +23,7 @@ class _SavedListPageState extends State<SavedListPage> {
           if (snapshot.hasData)
             saved.addAll(snapshot.data);
           else
-            bloc.addCrrentSaved;
+            bloc.addCrrentSaved;//sink를 통해 saved를 보내고 stream으로 받으면 snapshot.hasData == true 되고 if문 동작
           return ListView.builder(
               itemCount: saved.length * 2,
               itemBuilder: (context, index) {
