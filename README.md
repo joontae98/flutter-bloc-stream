@@ -1,6 +1,6 @@
 # Flutter Bloc Stream App
 
-Bloc Pattern, Stream의 이해를 돕기 위한 App
+**Bloc Pattern**, **Stream**의 이해를 돕기 위한 App
 
 ### BLoC(Bussiness Logic Component)
 
