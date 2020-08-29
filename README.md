@@ -10,7 +10,7 @@ UI는 UI를 나타내는 코드만 있어야 하고 유효성 검사, 데이터 
 
 **BLoC**은 추가로 **Reactive Programming**을 기본 기술로 사용하여 이벤트와 데이터 흐름을 처리한다. **Reactive Programming**은 데이터 스트림을 비동기적으로 처리해야 하는 문제를 해결하는 방법이다.   
 
-Flutter에서 **BLoC** 은 각 UI 객체들이 **Sink** 를 이용해서 값을 전달하고 **Stream** 을 통해 상태를 구독한다. 구독하고 있는 **BLoC** 객체 상태가 변경되면 BLoC 객체를 구독 중인 UI 객체들도 즉시 변경된다.   
+Flutter에서 **BLoC** 은 각 UI 객체들이 **Sink** 를 이용해서 값을 전달하고 **Stream** 을 통해 상태를 구독한다. 구독하고 있는 **BLoC** 객체 상태가 변경되면 **BLoC** 객체를 구독 중인 UI 객체들도 즉시 변경된다.   
 
 출처: https://centbin-dev.tistory.com/34
 
